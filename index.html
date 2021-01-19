@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet"> 
+</head>
+<body class="bg-light text-secondary" style="font-family: 'Patua One', cursive;">
+    <div class="container" style="width: 100vh;">
+        <div style="top:40%;position:absolute;margin:auto;width:100vh;">
+            <div class="row">
+                <div class="col text-center"><span class="h4">The event starts at:</span></div>
+            </div>
+            <div class="row">
+                <div class="col text-center display-4"><span id="eventTime"></span></div>
+            </div>
+            <div class="row">
+                <div class="col text-center h4">In <span id="zoneName"></span></div>
+            </div>            
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/1.25.0/luxon.min.js" integrity="sha512-OyrI249ZRX2hY/1CAD+edQR90flhuXqYqjNYFJAiflsKsMxpUYg5kbDDAVA8Vp0HMlPG/aAl1tFASi1h4eRoQw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            var zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            var params = new window.URLSearchParams(window.location.search);
+            var timestr = params.get('t');
+            var srcDt = luxon.DateTime.fromFormat(timestr, 'Hmm', {'zone': 'utc'});
+            var newDt = srcDt.setZone(zone);
+            $("#eventTime").html(newDt.setLocale(navigator.language).toFormat('t'));
+            $("#zoneName").html(zone);
+        });
+    </script>
+</body>
+</html>
