@@ -30,6 +30,7 @@
             var params = new window.URLSearchParams(window.location.search);
             var timestr = params.get('t');
             var srcDt = luxon.DateTime.fromFormat(timestr, 'Hmm', {'zone': 'utc'});
+            if (!zone) zone = 'utc';
             var newDt = srcDt.setZone(zone);
             $("#eventTime").html(newDt.setLocale(navigator.language).toFormat('t'));
             $("#zoneName").html(zone);
