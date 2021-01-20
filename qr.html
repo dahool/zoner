@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body style="background-color: #f8f9fa;">
+    <div id="canvas" style="margin:auto;width:256px;height:256px;margin-top:200px;"></div>
+    <script src="qrcode.min.js"></script>
+    <script type="text/javascript">
+        var params = new window.URLSearchParams(window.location.search);
+        console.log(new QRCode(document.getElementById('canvas'), params.get('u')));
+    </script>
+</body>
+</html>
