@@ -10,8 +10,7 @@
     <div id="canvas" style="margin:auto;width:256px;height:256px;margin-top:200px;"></div>
     <script src="qrcode.min.js"></script>
     <script type="text/javascript">
-        var params = new window.URLSearchParams(window.location.search);
-        console.log(new QRCode(document.getElementById('canvas'), params.get('u')));
+        console.log(new QRCode(document.getElementById('canvas'), prompt("Texto/URL", "")));
     </script>
 </body>
 </html>
